@@ -10,7 +10,7 @@ Frontend-only React web application with mobile-responsive design
 - **Framework**: React 18.3.1
 - **Build Tool**: Vite 6.3.5
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS (via globals.css)
+- **Styling**: Tailwind CSS v4.1.3 (pre-compiled in index.css)
 - **UI Components**: Radix UI (accordion, dialogs, dropdowns, etc.)
 - **Icons**: Lucide React
 - **Forms**: React Hook Form
@@ -25,11 +25,13 @@ src/
 │   ├── ui/             # Reusable UI components (buttons, cards, etc.)
 │   ├── figma/          # Figma-related components
 │   └── *.tsx           # Feature components (Home, Login, Jobs, etc.)
-├── styles/
-│   └── globals.css     # Global styles and Tailwind config
+├── index.css           # Pre-compiled Tailwind CSS v4.1.3
 ├── App.tsx             # Main app component with routing logic
 └── main.tsx            # Entry point
 ```
+
+## Styling Notes
+The project uses pre-compiled Tailwind CSS v4.1.3 (stored in `src/index.css`). This file contains all the generated Tailwind utility classes and is imported in `main.tsx`. If you need to modify Tailwind styles, you'll need to set up a proper Tailwind build pipeline or regenerate the CSS file.
 
 ## Key Features
 - **Customer Flow**: Welcome → Login → Diagnostic → DIY Guide or Job Request → Plumber Matching → Job Tracking → Payment
@@ -61,10 +63,11 @@ npm run build
 
 ## Recent Changes (November 9, 2025)
 - Imported project from GitHub
-- Configured Vite for Replit environment
+- Configured Vite for Replit environment (port 5000, host 0.0.0.0, allowedHosts)
 - Set up development workflow on port 5000
 - Added .gitignore for Node.js projects
 - Configured deployment settings for autoscale
+- Fixed CSS loading issue: Changed import from `./styles/globals.css` to `./index.css` to use pre-compiled Tailwind CSS
 
 ## Deployment
 The app is configured for Replit's autoscale deployment:
